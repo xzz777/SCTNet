@@ -90,7 +90,7 @@ Download `pretrain weights`
 Example: train ```SCTNet-base``` on ```ADE20K```:
 
 ```
-# 4 gpus, batch_per_gpu=4 , btachsize =16
+# 4 gpus, batch_per_gpu=8, btachsize =32
 bash tools/dist_train.sh configs\sctnet\ADE20K\sctnet-b_8x4_160k_ade.py 4
 ```
 train ```SCTNet-slim``` on ```Cityscapes```:
@@ -99,7 +99,18 @@ train ```SCTNet-slim``` on ```Cityscapes```:
 # 2 gpus, batch_per_gpu=8 , btachsize =16
 bash tools/dist_train.sh configs\sctnet\cityscapes\sctnet-s_seg75_8x2_160k_cityscapes.py 2
 ```
+train ```SCTNet-base``` on ```COCO-Stuff-10K```:
 
+```
+# 4 gpus, batch_per_gpu=4 , btachsize =16
+bash tools/dist_train.sh configs/sctnet/COCO-Stuff-10K/sctnet_b_4x4_160k.py 4
+```
+### weight conversion
+If you want to train SCTNet with other transformer or CNN branch, please download the specified model from the mmseg model zoo and run this script. 
+```
+python tools/pth_convert.py your_model_path your_save_path
+```
+You can also modify pth_conver.py to convert your customized models.
 
 ## Speed
 
